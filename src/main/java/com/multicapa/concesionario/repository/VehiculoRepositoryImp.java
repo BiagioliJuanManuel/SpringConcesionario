@@ -60,7 +60,7 @@ public class VehiculoRepositoryImp implements IVehiculoRepository{
         List<Vehiculo> respuesta = new ArrayList<>();
 
         for (Vehiculo vehiculo:dataBase) {
-            if (vehiculo.getPrice().equals() && vehiculo.getManufacturing().isBefore(hasta)){
+            if (vehiculo.getPrice()>= since && vehiculo.getPrice() <= to){
                 respuesta.add(vehiculo);
             }
 

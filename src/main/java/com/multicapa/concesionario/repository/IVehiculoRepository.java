@@ -13,6 +13,6 @@ public interface IVehiculoRepository {
     List<Vehiculo> filtrarFecha(String since, String to);
     List<Vehiculo> filtrarPrecios(int since, int to);
 
-    Vehiculo buscarPorId();
+    Vehiculo buscarPorId(int id);
 
 }

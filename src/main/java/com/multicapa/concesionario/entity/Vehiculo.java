@@ -12,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class Vehiculo {
+    private int id;
     private String brand;
     private String model;
     private LocalDate manufacturing;

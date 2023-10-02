@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -28,9 +27,9 @@ public class VehiculoRepositoryImp implements IVehiculoRepository{
     @Override
     public List<Vehiculo> filtrarFecha(String since, String to) {
         List<Vehiculo> respuesta = new ArrayList<>();
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate desde = LocalDate.parse(since, formato);
-        LocalDate hasta = LocalDate.parse(to, formato);
+//        DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate desde = LocalDate.parse(since);
+        LocalDate hasta = LocalDate.parse(to);
         for (Vehiculo vehiculo:dataBase) {
             if (vehiculo.getManufacturing().isAfter(desde) && vehiculo.getManufacturing().isBefore(hasta)){
                 respuesta.add(vehiculo);
@@ -70,7 +69,8 @@ public class VehiculoRepositoryImp implements IVehiculoRepository{
     }
 
     @Override
-    public Vehiculo buscarPorId() {
-        return null;
+    public Vehiculo buscarPorId(int id) {
+
+        return (Vehiculo) dataBase.stream().filter(vehiculo -> vehiculo.getId() == id);
     }
 }

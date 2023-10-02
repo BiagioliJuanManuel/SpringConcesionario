@@ -5,7 +5,6 @@ import com.multicapa.concesionario.service.IVehiculoServicio;
 import com.multicapa.concesionario.service.VehiculoServicioImp;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -20,7 +19,7 @@ public class VehiculoController {
 
     @PostMapping("/")
     public ResponseEntity<?> agregarVehiculo(@RequestBody VehiculoDto vehiculo){
-        return new ResponseEntity<>(service.agregarVehiculo(), HttpStatus.OK);
+        return new ResponseEntity<>(service.agregarVehiculo(vehiculo), HttpStatus.OK);
     }
 
     @GetMapping("/")
@@ -30,17 +29,17 @@ public class VehiculoController {
 
     @GetMapping("/dates")
     public ResponseEntity<?> entreFechas(@RequestParam String since, @RequestParam String to){
-        return new ResponseEntity<>(service.filtrarFecha(), HttpStatus.OK);
+        return new ResponseEntity<>(service.filtrarFecha(since, to), HttpStatus.OK);
     }
 
     @GetMapping("/prices")
     public ResponseEntity<?> entrePrecios(@RequestParam int since, @RequestParam int to){
-        return new ResponseEntity<>(service.filtrarPrecios(), HttpStatus.OK);
+        return new ResponseEntity<>(service.filtrarPrecios(since, to), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> buscarID(@PathVariable int id){
-        return new ResponseEntity<>(service.buscarPorId(), HttpStatus.OK);
+        return new ResponseEntity<>(service.buscarPorId(id), HttpStatus.OK);
     }
 
 //    @GetMapping("/dates/{since}/{to}")
